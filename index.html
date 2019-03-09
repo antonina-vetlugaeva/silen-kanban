@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>СИЛЕН</title>
+    <link rel="stylesheet" href="stylesheet/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/dragula.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Скажи, о чем ты хочешь забыть?</h1>
+    </header>
+
+    <section class="add-memory-container">
+      <input type="text" maxlength="12" id="thoughtText" placeholder="Хочу забыть..." onkeydown="if (event.keyCode == 13)
+                            document.getElementById('add').click()">
+      <button id="add" class="button add-button" onclick="addThought()">Прочь из головы!</button>
+    </section>
+
+    <div class="container">
+      <ul class="columns">
+
+        <li class="column forget-column">
+          <div class="column-header">
+            <h4>Не помнишь - </h4>
+          </div>
+          <ul class="forget-list" id="forget">
+            <li class="thought">
+              <p>Бывшую</p>
+            </li>
+            <li class="thought">
+              <p>Сон</p>
+            </li>
+            <li class="thought">
+              <p>5й класс</p>
+            </li>
+          </ul>
+        </li>
+
+
+        <li class="column trash-column">
+          <div class="column-header">
+            <h4>не было</h4>
+          </div>
+          <ul class="forget-list" id="trash">
+            <li class="thought">
+              <p>сессию</p>
+            </li>
+          </ul>
+          <div class="column-button">
+            <button class="button delete-button" onclick="emptyTrash()">Забыть!</button>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+    <footer>
+      <p>Если не помнишь, значит - не было! Перетаскивай плохие воспоминания во второй столбик и избавляйся от всего ненужного.<br>
+      А потом обязательно обращайся в <a href="https://antonina-vetlugaeva.github.io/silen-poster-master/">"Силен"</a> :)</p>
+    </footer>
+    <script>
+      dragula([
+      document.getElementById("forget"),
+      document.getElementById("trash")
+      ]);
+      removeOnSpill: false
+      .on("drag", function(el) {
+        el.className.replace("ex-moved", "");
+      })
+      .on("drop", function(el) {
+        el.className += "ex-moved";
+      })
+      .on("over", function(el, container) {
+        container.className += "ex-over";
+      })
+      .on("out", function(el, container) {
+        container.className.replace("ex-over", "");
+      });
+
+      function addThought() {
+      var inputThought = document.getElementById("thoughtText").value;
+      document.getElementById("forget").innerHTML +=
+        "<li class='thought'><p>" + inputThought + "</p></li>";
+      document.getElementById("thoughtText").value = "";
+      }
+
+      function emptyTrash() {
+      document.getElementById("trash").innerHTML = "";
+      }
+
+    </script>
+  </body>
+</html>
