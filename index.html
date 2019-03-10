@@ -6,11 +6,20 @@
     <link rel="stylesheet" href="stylesheet/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/dragula.js" charset="utf-8"></script>
+    <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
   </head>
   <body>
     <header>
-      <h1>Скажи, о чем ты хочешь забыть?</h1>
+      <div class="mainText">
+      </div>
+      <div class="link">
+         <h1 class="headline text-center"></h1>
+      </div>
+      <div class="mainText">
+      </div>
     </header>
+
+    <main>
 
     <section class="add-memory-container">
       <input type="text" maxlength="12" id="thoughtText" placeholder="Хочу забыть..." onkeydown="if (event.keyCode == 13)
@@ -55,6 +64,7 @@
 
       </ul>
     </div>
+  </main>
     <footer>
       <p>Если не помнишь, значит - не было! Перетаскивай плохие воспоминания во второй столбик и избавляйся от всего ненужного.<br>
       А потом обязательно обращайся в <a href="https://antonina-vetlugaeva.github.io/silen-poster-master/">"Силен"</a> :)</p>
@@ -89,6 +99,75 @@
       document.getElementById("trash").innerHTML = "";
       }
 
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded',function(event){
+
+        var dataText = [ "Скажи, о чем ты хочешь забыть?", "Плохие мысли сотрутся из памяти", "Вот так!"];
+
+
+
+        function typeWriter(text, i, fnCallback) {
+
+
+
+          if (i < (text.length)) {
+
+           document.querySelector(".headline").innerHTML = text.substring(0, i+1) +'<span class="typewriter" aria-hidden="true"></span>';
+
+
+            setTimeout(function() {
+              typeWriter(text, i + 1, fnCallback)
+            }, 100);
+          }
+
+          else if (typeof fnCallback == 'function') {
+
+            setTimeout(fnCallback, 100);
+          }
+        }
+
+         function StartTextAnimation(i) {
+           if (typeof dataText[i] == 'undefined'){
+
+
+                StartTextAnimation(0);
+
+           }
+
+          if (i < dataText[i].length) {
+
+           typeWriter(dataText[i], 0, function(){
+
+           function clearText() {
+             setTimeout(function(){
+                  var foo = $(".headline").html().replace('<span class="typewriter" aria-hidden="true"></span>',"");
+               if(foo.charAt(foo.length-1)===">") {
+                            var newX= foo.substring(0,foo.length-4);
+               } else {
+                  var newX= foo.substring(0,foo.length-1);
+                  }
+               $(".headline").html(newX+'<span class="typewriter" aria-hidden="true"></span>')
+               if(newX.length>0) {
+                 clearText();
+               } else {
+
+                      StartTextAnimation(i + 1);
+               }
+            },50);
+           }
+            setTimeout(function() {
+                clearText();
+              }, 400);
+
+
+           });
+          } else {
+        }
+        }
+
+        StartTextAnimation(0);
+      });
     </script>
   </body>
 </html>

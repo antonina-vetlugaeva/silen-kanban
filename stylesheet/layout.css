@@ -13,11 +13,28 @@ h4 {
 }
 
 header h1{
+  width: 25rem;
+  height: 9rem;
   margin: 5rem 3rem auto;
 
   font-size: 3rem;
 }
 
+.typewriter {
+  animation: caret 1s steps(1) infinite;
+
+  border-right: .05em solid;
+}
+
+@keyframes caret {
+  50% {
+    border-color: transparent;
+  }
+}
+
+main {
+  position: sticky;
+}
 
 p {
   font-family: "Brygada", serif;
