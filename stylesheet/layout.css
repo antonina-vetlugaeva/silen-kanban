@@ -7,6 +7,11 @@
   box-sizing: border-box;
 }
 
+body {
+	transform: scale(1.25);
+	transform-origin: center;
+}
+
 h1,
 h4 {
   font-family: "AvantGarde", sans-serif;
@@ -15,7 +20,7 @@ h4 {
 header h1{
   width: 25rem;
   height: 9rem;
-  margin: 5rem 3rem auto;
+  margin: 8rem 3rem auto;
 
   font-size: 3rem;
 }
@@ -155,6 +160,7 @@ li {
   border-radius: 0.2rem;
 
   font-family: "AvantGarde", sans-serif;
+  font-size: auto;
   font-weight: 700;
 }
 
@@ -162,6 +168,8 @@ li {
   margin: 0.1rem auto 0.6rem auto;
 
   background-color: #8084ce;
+
+
 }
 
 .delete-button:hover {
