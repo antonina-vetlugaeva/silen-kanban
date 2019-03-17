@@ -7,10 +7,7 @@
   box-sizing: border-box;
 }
 
-body {
-	transform: scale(1.25);
-	transform-origin: center;
-}
+
 
 h1,
 h4 {
@@ -71,7 +68,7 @@ footer {
   display: -ms-flexbox;
   display: flex;
 
-  width: 19.2rem;
+  width: 19.19rem;
   height: 5.3rem;
   margin: auto;
   padding: 0.4rem;
@@ -117,15 +114,15 @@ footer {
 .column-header h4 {
   text-align: center;
 
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 
 .forget-column .column-header {
-  background: #92dca9;
+  background: #5DD39E;
 }
 
 .trash-column .column-header {
-  background: #8084ce;
+  background: #5DD39E;
 }
 
 .forget-list {
@@ -160,20 +157,22 @@ li {
   border-radius: 0.2rem;
 
   font-family: "AvantGarde", sans-serif;
-  font-size: auto;
+  font-size: 0.75rem;
   font-weight: 700;
 }
 
 .delete-button {
   margin: 0.1rem auto 0.6rem auto;
 
-  background-color: #8084ce;
+  background-color: #00A85F;
+  box-shadow: 0 0.1rem 0 rgba(1, 101, 58, 0.7);
 
 
 }
 
 .delete-button:hover {
-  background-color: #a1a5e8;
+  background-color:  #22bc79;
+  box-shadow: 0 0.1rem 0 rgba(3, 131, 75, 0.7);
 }
 
 .add-button {
@@ -182,11 +181,13 @@ li {
   margin-top: 0.6rem;
   padding: 0 1rem;
 
-  background-color: #00A85F;
+  background-color: #8084ce;
+  box-shadow: 0 0.12rem 0 rgba(83, 86, 139, 0.7);
 }
 
 .add-button:hover {
-  background-color: #22bc79;
+  background-color: #a1a5e8;
+  box-shadow: 0 0.12rem 0 rgba(109, 112, 177, 0.7);
 }
 
 .thought {
@@ -217,7 +218,7 @@ li {
 
 #thoughtText {
   width: 7rem;
-  height: 3rem;
+  height: 2.8rem;
   margin: auto 0.8rem auto 0.1rem;
 
   text-align: center;
@@ -226,7 +227,8 @@ li {
   border-radius: 0.2rem;
   background: #fff;
 
-  font-family: "Roboto Slab", serif;
+  font-family: sans-serif;
+  font-size: 0.7rem;
 }
 
 .thought p {
