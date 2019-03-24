@@ -7,8 +7,6 @@
   box-sizing: border-box;
 }
 
-
-
 h1,
 h4 {
   font-family: "AvantGarde", sans-serif;
@@ -165,14 +163,14 @@ li {
   margin: 0.1rem auto 0.6rem auto;
 
   background-color: #00A85F;
-  box-shadow: 0 0.1rem 0 rgba(1, 101, 58, 0.7);
+  box-shadow: 0 0.15rem 0 rgba(1, 101, 58, 0.7);
 
 
 }
 
 .delete-button:hover {
   background-color:  #22bc79;
-  box-shadow: 0 0.1rem 0 rgba(3, 131, 75, 0.7);
+  box-shadow: 0 0.15rem 0 rgba(3, 131, 75, 0.7);
 }
 
 .add-button {
@@ -182,12 +180,12 @@ li {
   padding: 0 1rem;
 
   background-color: #8084ce;
-  box-shadow: 0 0.12rem 0 rgba(83, 86, 139, 0.7);
+  box-shadow: 0 0.17rem 0 rgba(83, 86, 139, 0.7);
 }
 
 .add-button:hover {
   background-color: #a1a5e8;
-  box-shadow: 0 0.12rem 0 rgba(109, 112, 177, 0.7);
+  box-shadow: 0 0.17rem 0 rgba(109, 112, 177, 0.7);
 }
 
 .thought {
@@ -234,6 +232,96 @@ li {
 .thought p {
   margin: auto;
 }
+
+.closeBtn{
+  float: right;
+
+  cursor: pointer;
+
+  color: white;
+
+
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: none;
+
+  background: rgba(0,0,0, 0.2);
+
+  justify-content: center;
+}
+
+.modal .modal-wrapper {
+  position: absolute;
+  top: 15%;
+
+  width: 30rem;
+  max-width: 31.25rem;
+
+  transform: rotateX(0deg);
+  animation-name:modalopen;
+  animation-duration:.8s;
+  text-align: left;
+
+  border: #000013 0.2rem solid;
+  border-radius: 0.2rem;
+  background: rgb(0,100, 250);
+  box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.4);
+}
+
+.modal-header {
+  padding: 0.6rem 0.9rem;
+
+  text-align: center;
+
+  border-bottom: #000013 0.2rem solid;
+  background-color: #00A85F;
+
+  font-family: 'AvantGarde';
+  font-size: 1rem;
+}
+
+.modal-header h3 {
+  vertical-align: middle;
+}
+
+.modal-body {
+  padding: 1.875rem 0.9375rem;
+
+  text-align: center;
+
+  background: white;
+
+  font-family: 'Brygada';
+  font-size: 1rem;
+}
+
+
+@keyframes modalopen{
+  from {
+    top: 5%;
+
+    transform: rotateX(15deg);
+
+    opacity: 0;
+   }
+  to {
+    top: 15%;
+
+    transform: rotateX(0deg);
+
+    opacity: 1;
+    }
+}
+
+
+
 
 .gu-mirror {
   position: fixed !important;

@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/dragula.js" charset="utf-8"></script>
     <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
     <header>
@@ -20,55 +22,72 @@
     </header>
 
     <main>
+      <div class="page">
+        <section class="add-memory-container">
+          <input type="text" maxlength="12" id="thoughtText" placeholder="Хочу забыть..." onkeydown="if (event.keyCode == 13)
+                                document.getElementById('add').click()">
+          <button id="add" class="button add-button" onclick="addThought()">Прочь из головы!</button>
+        </section>
 
-    <section class="add-memory-container">
-      <input type="text" maxlength="12" id="thoughtText" placeholder="Хочу забыть..." onkeydown="if (event.keyCode == 13)
-                            document.getElementById('add').click()">
-      <button id="add" class="button add-button" onclick="addThought()">Прочь из головы!</button>
-    </section>
+        <div class="container">
+          <ul class="columns">
 
-    <div class="container">
-      <ul class="columns">
+            <li class="column forget-column">
+              <div class="column-header">
+                <h4>не помнишь </h4>
+              </div>
+              <ul class="forget-list" id="forget">
+                <li class="thought">
+                  <p>Бывшую</p>
+                </li>
+                <li class="thought">
+                  <p>Сон</p>
+                </li>
+                <li class="thought">
+                  <p>5й класс</p>
+                </li>
+              </ul>
+            </li>
 
-        <li class="column forget-column">
-          <div class="column-header">
-            <h4>не помнишь </h4>
-          </div>
-          <ul class="forget-list" id="forget">
-            <li class="thought">
-              <p>Бывшую</p>
+
+            <li class="column trash-column">
+              <div class="column-header">
+                <h4>не было</h4>
+              </div>
+              <ul class="forget-list" id="trash">
+                <li class="thought">
+                  <p>сессию</p>
+                </li>
+              </ul>
+              <div class="column-button">
+                <button class="button delete-button" onclick="emptyTrash()">Забыть!</button>
+              </div>
             </li>
-            <li class="thought">
-              <p>Сон</p>
-            </li>
-            <li class="thought">
-              <p>5й класс</p>
-            </li>
+
           </ul>
-        </li>
+        </div>
+      </div>
 
 
-        <li class="column trash-column">
-          <div class="column-header">
-            <h4>не было</h4>
+      <div class="modal">
+        <div class="modal-wrapper">
+          <div class="modal-header">
+            <span class="closeBtn">&times;</span>
+            <h3>Воспоминание стерто!</h3>
           </div>
-          <ul class="forget-list" id="trash">
-            <li class="thought">
-              <p>сессию</p>
-            </li>
-          </ul>
-          <div class="column-button">
-            <button class="button delete-button" onclick="emptyTrash()">Забыть!</button>
+          <div class="modal-body">
+            <p>Продолжай этот медитативный процесс, и помни, что мы всегда ждем тебя в <a href="https://vk.com/take_me_to_church">центре удаления памяти</a></p>
           </div>
-        </li>
+      </div>
+    </main>
 
-      </ul>
-    </div>
-  </main>
+
+
     <footer>
       <p>Если не помнишь, значит - не было! Перетаскивай плохие воспоминания во второй столбик и избавляйся от всего ненужного.<br>
-      А потом обязательно обращайся в <a href="https://antonina-vetlugaeva.github.io/silen-poster-master/">"Силен"</a> :)</p>
+      А потом обязательно обращайся в <a href="https://vk.com/take_me_to_church">"Силен"</a> :)</p>
     </footer>
+
     <script>
       dragula([
       document.getElementById("forget"),
@@ -169,5 +188,34 @@
         StartTextAnimation(0);
       });
     </script>
+
+    <script>
+      var btn = document.querySelector('.delete-button'),
+      modal = document.querySelector('.modal'),
+      closeBtn = document.querySelector('.closeBtn');
+
+
+
+      btn.addEventListener('click', function() {
+          modal.style.display = 'flex';
+
+      })
+
+
+
+
+      closeBtn.addEventListener('click', function () {
+      	modal.style.display = "none";
+      })
+
+      window.addEventListener('click', function (e) {
+      	if(e.target == modal) {
+         		modal.style.display = "none";
+      	}
+      })
+
+
+    </script>
+
   </body>
 </html>
