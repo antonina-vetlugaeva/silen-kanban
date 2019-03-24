@@ -11,6 +11,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
+
+    <div id="loading">
+      <img id="loading-image" src="img/loader.gif" alt="Loading..." />
+    </div>
+
+
+
     <header>
       <div class="mainText">
       </div>
@@ -44,7 +51,7 @@
                   <p>Сон</p>
                 </li>
                 <li class="thought">
-                  <p>5й класс</p>
+                  <p>всё!</p>
                 </li>
               </ul>
             </li>
@@ -76,7 +83,7 @@
             <h3>Воспоминание стерто!</h3>
           </div>
           <div class="modal-body">
-            <p>Продолжай этот медитативный процесс, и помни, что мы всегда ждем тебя в <a href="https://vk.com/take_me_to_church">центре удаления памяти</a></p>
+            <p>Продолжай этот медитативный процесс, записывая ненужные мысли и избавляясь от них буквально за пару секунд. Помни, мы всегда ждем тебя в <a href="https://vk.com/take_me_to_church">центре удаления памяти</a></p>
           </div>
       </div>
     </main>
@@ -221,6 +228,14 @@
 
 
     </script>
+
+    <script language="javascript" type="text/javascript">
+     $(window).load(function() {
+     $('#loading').hide();
+  });
+</script>
+
+
 
   </body>
 </html>
