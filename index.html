@@ -190,16 +190,19 @@
     </script>
 
     <script>
+
       var btn = document.querySelector('.delete-button'),
       modal = document.querySelector('.modal'),
       closeBtn = document.querySelector('.closeBtn');
 
 
 
-      btn.addEventListener('click', function() {
-          modal.style.display = 'flex';
+       function showModal() {
+         modal.style.display = 'flex';
+         btn.removeEventListener('click', showModal);
+       }
 
-      })
+      btn.addEventListener('click', showModal);
 
 
 
@@ -213,6 +216,8 @@
          		modal.style.display = "none";
       	}
       })
+
+
 
 
     </script>
