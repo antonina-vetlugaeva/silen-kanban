@@ -8,10 +8,8 @@
     <script src="js/dragula.js" charset="utf-8"></script>
     <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
   </head>
+  
   <body>
-
-    
-
     <header>
       <div class="mainText">
       </div>
@@ -29,10 +27,8 @@
                                 document.getElementById('add').click()">
           <button id="add" class="button add-button" onclick="addThought()">Прочь из головы!</button>
         </section>
-
         <div class="container">
           <ul class="columns">
-
             <li class="column forget-column">
               <div class="column-header">
                 <h4>не помнишь </h4>
@@ -49,8 +45,6 @@
                 </li>
               </ul>
             </li>
-
-
             <li class="column trash-column">
               <div class="column-header">
                 <h4>не было</h4>
@@ -64,12 +58,9 @@
                 <button class="button delete-button" onclick="emptyTrash()">Забыть!</button>
               </div>
             </li>
-
           </ul>
         </div>
       </div>
-
-
       <div class="modal">
         <div class="modal-wrapper">
           <div class="modal-header">
@@ -82,162 +73,13 @@
       </div>
     </main>
 
-
-
     <footer>
       <p>Если не помнишь, значит - не было! Перетаскивай плохие воспоминания во второй столбик и избавляйся от всего ненужного.<br>
       А потом обязательно обращайся в <a href="https://vk.com/take_me_to_church">"Силен"</a> :)</p>
     </footer>
 
-    <script>
-      dragula([
-      document.getElementById("forget"),
-      document.getElementById("trash")
-      ]);
-      removeOnSpill: false
-      .on("drag", function(el) {
-        el.className.replace("ex-moved", "");
-      })
-      .on("drop", function(el) {
-        el.className += "ex-moved";
-      })
-      .on("over", function(el, container) {
-        container.className += "ex-over";
-      })
-      .on("out", function(el, container) {
-        container.className.replace("ex-over", "");
-      });
-
-      function addThought() {
-      var inputThought = document.getElementById("thoughtText").value;
-      document.getElementById("forget").innerHTML +=
-        "<li class='thought'><p>" + inputThought + "</p></li>";
-      document.getElementById("thoughtText").value = "";
-      }
-
-      function emptyTrash() {
-      document.getElementById("trash").innerHTML = "";
-      }
-
-    </script>
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded',function(event){
-
-        var dataText = [ "Скажи, о чем ты хочешь забыть?", "Плохие мысли сотрутся из памяти", "Вот так!"];
-
-
-
-        function typeWriter(text, i, fnCallback) {
-
-
-
-          if (i < (text.length)) {
-
-           document.querySelector(".headline").innerHTML = text.substring(0, i+1) +'<span class="typewriter" aria-hidden="true"></span>';
-
-
-            setTimeout(function() {
-              typeWriter(text, i + 1, fnCallback)
-            }, 100);
-          }
-
-          else if (typeof fnCallback == 'function') {
-
-            setTimeout(fnCallback, 100);
-          }
-        }
-
-         function StartTextAnimation(i) {
-           if (typeof dataText[i] == 'undefined'){
-
-
-                StartTextAnimation(0);
-
-           }
-
-          if (i < dataText[i].length) {
-
-           typeWriter(dataText[i], 0, function(){
-
-           function clearText() {
-             setTimeout(function(){
-                  var foo = $(".headline").html().replace('<span class="typewriter" aria-hidden="true"></span>',"");
-               if(foo.charAt(foo.length-1)===">") {
-                            var newX= foo.substring(0,foo.length-4);
-               } else {
-                  var newX= foo.substring(0,foo.length-1);
-                  }
-               $(".headline").html(newX+'<span class="typewriter" aria-hidden="true"></span>')
-               if(newX.length>0) {
-                 clearText();
-               } else {
-
-                      StartTextAnimation(i + 1);
-               }
-            },50);
-           }
-            setTimeout(function() {
-                clearText();
-              }, 400);
-
-
-           });
-          } else {
-        }
-        }
-
-        StartTextAnimation(0);
-      });
-    </script>
-
-    <script>
-
-      var btn = document.querySelector('.delete-button'),
-      modal = document.querySelector('.modal'),
-      closeBtn = document.querySelector('.closeBtn');
-
-
-
-       function showModal() {
-         modal.style.display = 'flex';
-         btn.removeEventListener('click', showModal);
-       }
-
-      btn.addEventListener('click', showModal);
-
-
-
-
-      closeBtn.addEventListener('click', function () {
-      	modal.style.display = "none";
-      })
-
-      window.addEventListener('click', function (e) {
-      	if(e.target == modal) {
-         		modal.style.display = "none";
-      	}
-      })
-
-
-
-
-    </script>
-
-    <script>
-      $(.loader).load(function() {
-        setTimeout(function(){
-          $('.loader').fadeOut('slow'); }, 1000);
-      })
-    </script>
-
-    <script>
-
-    </script>
-
-
-
-
+    <script src="js/main.js" charset="utf-8"></script>
+    <script src="js/modal.js" charset="utf-8"></script>
+    <script src="js/text.js" charset="utf-8"></script>
   </body>
 </html>
